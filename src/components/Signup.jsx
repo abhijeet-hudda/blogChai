@@ -41,6 +41,7 @@ function Signup() {
                 <p className="mt-2 text-center text-base text-black/60">
                 Already have an account?&nbsp;
                 <Link
+                    //if alredy have an account go to login page no need signup
                     to="/login"
                     className="font-medium text-primary transition-all duration-200 hover:underline"
                 >
@@ -88,3 +89,6 @@ function Signup() {
     </div>
   );
 }
+
+
+export default Signup

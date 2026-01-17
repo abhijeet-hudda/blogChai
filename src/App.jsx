@@ -8,6 +8,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
+  //So when page refreshes:
+  //User stays logged in
+  //No need to login again
+
   useEffect(()=>{
     authService.getCurrentUser()
     .then((userData)=>{

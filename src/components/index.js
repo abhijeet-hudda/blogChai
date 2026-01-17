@@ -6,6 +6,12 @@ import Logo from "./Logo";
 import Button from "./Button";
 import Input from "./Input";
 import Select from "./Select";
+import Signup from "./Signup";
+import PostCard from "./PostCard";
+import RTE from "./RTE";
+import PostForm from "./Post-form/Post-form";
+import Protected from "./AuthLayout";
+import Login from "./Login";
 
 export default {
     Header,
@@ -15,5 +21,11 @@ export default {
     Footer,
     Logo,
     Button,
-    Select
+    Select,
+    Signup,
+    PostCard,
+    RTE,
+    PostForm,
+    Protected,
+    Login
 }
