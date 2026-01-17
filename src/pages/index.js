@@ -6,7 +6,7 @@ import EditPost from "./EditPost.page";
 import Signup from "./Signup.page";
 import Post from "./Post.page";
 
-export default {
+export {
     Home,
     Login,
     Signup,

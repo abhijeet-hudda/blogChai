@@ -13,7 +13,7 @@ import PostForm from "./Post-form/Post-form";
 import Protected from "./AuthLayout";
 import Login from "./Login";
 
-export default {
+export {
     Header,
     LogoutBtn,
     Container,
