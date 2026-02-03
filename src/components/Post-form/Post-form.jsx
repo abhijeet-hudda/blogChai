@@ -96,67 +96,71 @@ export default function PostForm({ post }) {
 
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
-        <Input
-          label="Title :"
-          placeholder="Title"
-          className="mb-4"
-          {...register("title", { required: true })}
-        />
-        <Input
-          label="Slug :"
-          placeholder="Slug"
-          className="mb-4"
-          {...register("slug", { required: true })}
-          onInput={(e) => {
-            setValue("slug", slugTransform(e.currentTarget.value), {
-              shouldValidate: true,
-            });
-          }}
-        />
-        <RTE
-          label="Content :"
-          name="content"
-          control={control}
-          defaultValue={getValues("content")}
-        />
+    <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-6 lg:flex-row">
+      <div className="w-full lg:w-2/3">
+        <div className="rounded-2xl border border-white/70 bg-white/90 p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.4)] backdrop-blur">
+          <Input
+            label="Title :"
+            placeholder="Title"
+            className="mb-4"
+            {...register("title", { required: true })}
+          />
+          <Input
+            label="Slug :"
+            placeholder="Slug"
+            className="mb-4"
+            {...register("slug", { required: true })}
+            onInput={(e) => {
+              setValue("slug", slugTransform(e.currentTarget.value), {
+                shouldValidate: true,
+              });
+            }}
+          />
+          <RTE
+            label="Content :"
+            name="content"
+            control={control}
+            defaultValue={getValues("content")}
+          />
+        </div>
       </div>
-      <div className="w-1/3 px-2">
-        <Input
-          label="Featured Image :"
-          type="file"
-           className="block w-full text-sm text-slate-500
+      <div className="w-full lg:w-1/3">
+        <div className="rounded-2xl border border-white/70 bg-white/90 p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.4)] backdrop-blur">
+          <Input
+            label="Featured Image :"
+            type="file"
+            className="block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
-                        file:text-sm file:font-semibold
-                        file:bg-violet-50 file:text-violet-700
-                        hover:file:bg-violet-100 cursor-pointer"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("image", { required: !post })}
-        />
-        {post && (
-          <div className="w-full mb-4">
-            <img
-              src={preview}
-              alt={post.title}
-              className="rounded-lg"
-            />
-          </div>
-        )}
-        <Select
-          options={["active", "inactive"]}
-          label="Status"
-          className="mb-4"
-          {...register("status", { required: true })}
-        />
-        <Button
-          type="submit"
-          bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
-        >
-          {post ? "Update" : "Submit"}
-        </Button>
+                        file:text-xs file:font-semibold
+                        file:bg-slate-900 file:text-white
+                        hover:file:bg-slate-800 cursor-pointer"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("image", { required: !post })}
+          />
+          {preview && (
+            <div className="mt-4">
+              <img
+                src={preview}
+                alt={post?.title || "Preview"}
+                className="h-48 w-full rounded-xl object-cover"
+              />
+            </div>
+          )}
+          <Select
+            options={["active", "inactive"]}
+            label="Status"
+            className="mb-4 mt-6"
+            {...register("status", { required: true })}
+          />
+          <Button
+            type="submit"
+            bgColor={post ? "bg-slate-900" : undefined}
+            className="w-full"
+          >
+            {post ? "Update" : "Submit"}
+          </Button>
+        </div>
       </div>
     </form>
   );

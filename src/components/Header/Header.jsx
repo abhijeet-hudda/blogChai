@@ -35,21 +35,24 @@ function Header() {
     },
     ];
     return (
-        <header className="py-3 shadow bg-gray-500">
+        <header className="sticky top-0 z-50 border-b border-white/70 bg-white/80 backdrop-blur">
         <Container>
-            <nav className="flex">
-            <div className="mr-4">
-                <Link to="/">
-                <Logo width="70px" />
+            <nav className="flex items-center gap-6 py-3">
+            <div className="flex items-center gap-3">
+                <Link to="/" className="flex items-center gap-2">
+                <Logo width="64px" />
+                <span className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">
+                    Chai Blog
+                </span>
                 </Link>
             </div>
-            <ul className="flex ml-auto">
+            <ul className="ml-auto flex items-center gap-2">
                 {navItems.map((item) =>
                 item.active ? (
                     <li key={item.name}>
                     <button
                         onClick={() => navigate(item.slug)}
-                        className="inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
+                        className="rounded-full border border-transparent px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-200 hover:bg-slate-50 hover:text-slate-900"
                     >
                         {item.name}
                     </button>
@@ -57,8 +60,10 @@ function Header() {
                 ) : null
                 )}
                 {authStatus && (
-                <li>
-                    <LogoutBtn />
+                <li className="ml-2">
+                    <div className="rounded-full border border-slate-200 bg-slate-900/90 px-1 py-1 text-white shadow-[0_10px_30px_-15px_rgba(15,23,42,0.6)]">
+                        <LogoutBtn />
+                    </div>
                 </li>
                 )}
             </ul>
